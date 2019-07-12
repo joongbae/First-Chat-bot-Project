@@ -11,8 +11,8 @@ from slackeventsapi import SlackEventAdapter
 import xml.etree.ElementTree as ET
 
 
-SLACK_TOKEN = "xoxb-689115425012-678323281795-r2aZiWW4IXH4qRDOzxJS5r7Z"
-SLACK_SIGNING_SECRET = "0d11959f3fe2399e4d51dc1c860d5e65"
+SLACK_TOKEN = ""
+SLACK_SIGNING_SECRET = ""
 
 
 app = Flask(__name__)
@@ -34,7 +34,7 @@ def bus_info(text):
    if len(text_list[1]) > 4:  # 입력 값 -> 버스정류장ID
        # 버스번호 출력
        static_url = 'http://openapitraffic.daejeon.go.kr/api/rest/arrive/getArrInfoByUid?arsId='
-       serviceKey = '&serviceKey=wU25sEMMnY1Vw82mv%2FcrSIs0QGLAygNDPzN656edxTh28O3uh8jMBR4I3DC6TUosgRzAdKABwBCZDMU4aJgNUw%3D%3D'
+       serviceKey = ''
 
        url = static_url + text_list[1] + serviceKey # 공공데이터포털에 요청할 URL조합
 
@@ -55,7 +55,7 @@ def bus_info(text):
 
         # 버스노선출력
         static_url2 = "http://openapitraffic.daejeon.go.kr/api/rest/busRouteInfo/getStaionByRoute?busRouteId="
-        service_key2 = "&serviceKey=wU25sEMMnY1Vw82mv%2FcrSIs0QGLAygNDPzN656edxTh28O3uh8jMBR4I3DC6TUosgRzAdKABwBCZDMU4aJgNUw%3D%3D"
+        service_key2 = ""
         url2 = static_url2 + str(dicNo[text_list[1]]) + service_key2 # 공공데이터포털에 요청할 URL조합
 
         tree2 = ET.parse(urllib.request.urlopen(url2)) # XML파싱
